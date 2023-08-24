@@ -13,33 +13,34 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
-
+BASE_DIR = Path(__file__).resolve().parent.parent  # 项目根目录
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-48tc5rp=@h(7a3e%mxlxsmnwicbbl2nf-!_2l&upa!st0#6^2='
+SECRET_KEY = 'django-insecure-48tc5rp=@h(7a3e%mxlxsmnwicbbl2nf-!_2l&upa!st0#6^2='  # 用于为Django的某些部分（如session和CSRF保护）提供加密的秘钥
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True  # 当设置为True时，Django会显示详细的错误信息，包括执行的SQL查询、中间件和其他有关的信息。这对于开发和调试很有用。但是在生产环境中，应该将其设置为False以防止敏感信息泄露。
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = []  # 列表，包含了Django项目可以服务的域名或IP地址。为了防止HTTP Host头攻击，非列表中的主机头将被拒绝。
 
 # Application definition
 
 INSTALLED_APPS = [
+    # 可以设置多个APP,确保APP注册了
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'app01.apps.App01Config',
 ]
 
 MIDDLEWARE = [
+    # 中间件是一个处理请求和响应的框架级的钩子。它是一个处理Django请求/响应流程中不同阶段的组件列表，例如认证、安全性和缓存。
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -49,13 +50,13 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'zhangjie.urls'
+ROOT_URLCONF = 'zhangjie.urls'  # 指定了URL配置的Python路径
 
 TEMPLATES = [
+    # 模板系统的设置。它定义了模板如何加载、渲染等。
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
-        ,
+        # 'DIRS': [BASE_DIR / 'templates']  pycharm默认生成的，删除不需要templates
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -68,24 +69,23 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'zhangjie.wsgi.application'
-
+WSGI_APPLICATION = 'zhangjie.wsgi.application'  # 这是WSGI应用程序的路径，用于与应用服务器（如Gunicorn或uWSGI）通信。
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
+    # 设置数据库
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
-AUTH_PASSWORD_VALIDATORS = [
+AUTH_PASSWORD_VALIDATORS = [  # 用于验证用户密码的验证器。
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
@@ -100,25 +100,23 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en-us'  # 设置项目语言为英文，中文为zh-hans
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'UTC'  # 设置项目时区
 
-USE_I18N = True
+USE_I18N = True  # 设置为True，则启用国际化（i18n）支持。这允许你的应用在多种语言中呈现。
 
-USE_TZ = True
-
+USE_TZ = True  # 设置为True，则启用时区支持。这会影响到日期和时间的处理方式。
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = 'static/'  # 定义了静态文件（如CSS、JavaScript、图片等）的URL前缀。
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'  # 当模型中不指定主键时，Django应该使用的默认字段类型。例如，'django.db.models.AutoField'。

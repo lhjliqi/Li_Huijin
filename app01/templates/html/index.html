@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- 设置浏览器显示语言，en为英文 -->
+
+<head>
+    <meta charset="UTF-8">
+    <title>光谷水果团购</title>  <!-- 网页标题 -->
+    <style>
+        .page-title {
+            text-align: center;
+        {% comment %} 标题居左 {% endcomment %}
+        }
+
+        .horizontal-line {
+            border: 1px solid black; /* 水平线颜色和水平线高度 */
+            width: 100%; /* 宽度 */
+            margin-left: auto; /* 默认左对齐，0也代表左对齐 */
+            margin-right: auto;
+        {% comment %}
+            margin-left和margin-right都设置成auto时，水平线为居中
+            margin-left设置为auto，margin-right设置0，为右对齐
+        {% endcomment %}
+        }
+
+        .my-image {
+            width: 120px;
+            height: 120px;
+        }
+
+        .horizontal-list {
+            list-style-type: none; /* 移除无序列表前面的点 */
+            padding: 0; /* 移除默认的内边距 */
+            margin: 0; /* 移除默认的外边距 */
+            display: flex; /* 使用弹性盒模型以便列表项并排排列 */
+        }
+
+        .horizontal-list li {
+            margin-right: 20px; /* 添加每个列表项之间的间距 */
+        }
+
+    </style>
+</head>
+<body>
+<h1 class="page-title">欢迎来到光谷水果小红书团购！！！</h1> {% comment %}两种文本位置方式，css样式和标签内部{% endcomment %}
+{% comment %} 标题居左 {% endcomment %}
+<h3>今日公告：</h3>
+<p>
+    <br>所有人今天新货又到了，汉口店自提，都是干包大黄肉的好果子 {% comment %} <br>换行标签 {% endcomment %}
+    <br>统一价:<b>25.9元</b> {% comment %} <b>字体加粗标签 {% endcomment %}
+    <br>根据近2天的表现来看，出肉率一直维持着50%左右，
+    买过的小伙伴都知道，皮真的非常薄，闭眼冲就对了！（PS：买一箱可专送，其他不送）
+</p>
+<hr class="horizontal-line">
+{% comment %} <hr>水平线： {% endcomment %}
+<h3 style="text-align: left">榴莲列表</h3>
+<ul class="horizontal-list">
+    <li>{% load static %}<img src="{% static 'img/zxc.jpg' %}" class="my-image" alt="周星驰"></li>
+    {% comment %}
+        alt：如果图片无法正常加载则显示alt中的内容
+        {% load static %}<img src="{% static '图片路径以及图片名' %}"
+        在django中要使用这种方式才能正常显示图片
+    {% endcomment %}
+    <li>{% load static %}<img src="{% static 'img/ldh.jpg' %}" class="my-image" alt="刘德华"></li>
+    <li>{% load static %}<img src="{% static 'img/gtl.jpg' %}" class="my-image" alt="古天乐"></li>
+    <li>{% load static %}<img src="{% static 'img/msk.jpg' %}" class="my-image" alt="马斯克"></li>
+    <li>{% load static %}<img src="{% static 'img/tlp.jpg' %}" class="my-image" alt="特朗普"></li>
+    <li>{% load static %}<img src="{% static 'img/kb.jpg' %}" class="my-image" alt="科比"></li>
+</ul>
+</body>
+</html>

@@ -16,7 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from app01 import views   # 导入app01中的函数视图
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    # path('admin/', admin.site.urls),
+    path('index/', views.index),  # www.xxx.com/index/ -->函数
+    path('users/', views.users_list),  # www.xxx.com/users/ -->函数
 ]
